@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Introducao {
@@ -13,12 +15,16 @@ public class Introducao {
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotBlank
+	@Size(max=150)
 	private String titulo;
+	@NotBlank
 	private String autoria;
 	@Column(name="resumo_estruturado")
+	@NotBlank
 	private String resumoEstruturado;
 	@Column(name="palavras_chave")
+	@NotBlank
 	private String palavrasChave; 
 	
 	

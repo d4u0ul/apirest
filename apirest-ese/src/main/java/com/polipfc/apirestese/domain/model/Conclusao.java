@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -13,14 +14,27 @@ public class Conclusao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	@NotBlank
 	@Column(name="desvios_planejamento")
 	private String desviosDoPlanejamento ;
+	@NotBlank
 	private String  analises;
-	private String discussão;
+	@NotBlank
+	private String discussao;
+	@NotBlank
 	@Column(name="conclusoes_trab_fut")
 	private String conclusõesEtrabalhosFuturos ;
+	@NotBlank
 	private String contribuidores; 
+	@NotBlank
 	private String referencias;
+	@NotBlank
 	private String apendices ;
 
 	
@@ -37,10 +51,10 @@ public class Conclusao {
 		this.analises = analises;
 	}
 	public String getDiscussão() {
-		return discussão;
+		return discussao;
 	}
 	public void setDiscussão(String discussão) {
-		this.discussão = discussão;
+		this.discussao = discussão;
 	}
 	public String getConclusõesEtrabalhosFuturos() {
 		return conclusõesEtrabalhosFuturos;
