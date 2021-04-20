@@ -13,6 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Relatorio {
@@ -23,17 +28,24 @@ public class Relatorio {
 
 	//podemos colocar a parametrização de join com @JoinColumn(name=cliente_id)  <--cliente_id é o padrão assumido por @onetoone ou seja classe_id esse relacionamento deve ser feito no bd
 	@OneToOne
+	@NotNull
 	private Introducao introducao;
+	@NotNull
 	@OneToOne
 	private Desenvolvimento desenvolvimento;
+	@NotNull
 	@OneToOne
 	private Conclusao conclusao;
-	
+	@NotBlank
 	private String descricao;
 	
+	@JsonProperty(access=Access.READ_ONLY)
+	@Column(name="status")
 	@Enumerated(EnumType.STRING) //especifica que queremos guardar no bd uma string, se não ele identifica como números 1,2,3...
 	private StatusRelatorio statusRelatorio;
+	@JsonProperty(access=Access.READ_ONLY)
 	private OffsetDateTime dataAbertura;
+	@JsonProperty(access=Access.READ_ONLY)
 	private OffsetDateTime dataFinalizacao;
 	//private List<Comentario> comentarios= new ArrayList<>();
 	

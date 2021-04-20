@@ -3,5 +3,5 @@ package com.polipfc.apirestese.domain.model;
 public enum StatusRelatorio {
 
 	
-	ABERTA, FINALIZADA, CANCELADA
+	ABERTO, FINALIZADO, CANCELADO
 }
