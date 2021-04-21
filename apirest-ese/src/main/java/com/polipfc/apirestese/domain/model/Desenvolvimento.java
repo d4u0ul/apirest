@@ -6,12 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.polipfc.apirestese.domain.ValidationGroups;
 
 @Entity
 public class Desenvolvimento {
 
 	
 	@Id
+	@NotNull(groups = ValidationGroups.DesenvolvimentoId.class)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank

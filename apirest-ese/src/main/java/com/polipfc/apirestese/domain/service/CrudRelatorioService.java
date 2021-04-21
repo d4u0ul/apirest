@@ -38,6 +38,22 @@ public class CrudRelatorioService {
 		Desenvolvimento desenvolvimento = desenvolvimentoRepository.findById(relatorio.getDesenvolvimento().getId()).orElseThrow(() -> new NegocioException("Id de desenvolvimento não encontrado"));
 		Conclusao conclusao = conclusaoRepository.findById(relatorio.getConclusao().getId()).orElseThrow(() -> new NegocioException("Id de conclusao não encontrado"));
 	
+		
+	Relatorio relatorioExistente = relatorioRepository.findByIntroducao(relatorio.getIntroducao());
+	
+	
+	
+	//relatorioExistente.setIntroducao(introducao);
+	//relatorioExistente.setDesenvolvimento(desenvolvimento);
+	//relatorioExistente.setConclusao(conclusao);
+
+	//if(introducaoTituloExistente !=null &&!introducaoTituloExistente.equals((introducao))) {
+	//	throw new NegocioException("titulo já existente");
+	//}
+	//return introducaoRepository.save(introducao);
+	
+		
+		
 		relatorio.setIntroducao(introducao);
 		relatorio.setDesenvolvimento(desenvolvimento);
 		relatorio.setConclusao(conclusao);

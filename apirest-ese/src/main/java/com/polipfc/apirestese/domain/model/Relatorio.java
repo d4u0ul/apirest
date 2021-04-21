@@ -13,11 +13,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
+
+import org.springframework.context.annotation.Primary;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.polipfc.apirestese.domain.ValidationGroups;
 
 @Entity
 public class Relatorio {
@@ -29,12 +36,21 @@ public class Relatorio {
 	//podemos colocar a parametrização de join com @JoinColumn(name=cliente_id)  <--cliente_id é o padrão assumido por @onetoone ou seja classe_id esse relacionamento deve ser feito no bd
 	@OneToOne
 	@NotNull
+	@Valid
+	@ConvertGroup (from = Default.class, to = ValidationGroups.IntroducaoId.class)
+	
 	private Introducao introducao;
+	@Valid
 	@NotNull
 	@OneToOne
+	@ConvertGroup (from = Default.class, to = ValidationGroups.DesenvolvimentoId.class)
+	
 	private Desenvolvimento desenvolvimento;
+	@Valid
 	@NotNull
 	@OneToOne
+	@ConvertGroup (from = Default.class, to = ValidationGroups.ConclusaoId.class)
+	
 	private Conclusao conclusao;
 	@NotBlank
 	private String descricao;
@@ -113,7 +129,9 @@ public class Relatorio {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((conclusao == null) ? 0 : conclusao.hashCode());
+		result = prime * result + ((desenvolvimento == null) ? 0 : desenvolvimento.hashCode());
+		result = prime * result + ((introducao == null) ? 0 : introducao.hashCode());
 		return result;
 	}
 	@Override
@@ -125,13 +143,24 @@ public class Relatorio {
 		if (getClass() != obj.getClass())
 			return false;
 		Relatorio other = (Relatorio) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (conclusao == null) {
+			if (other.conclusao != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!conclusao.equals(other.conclusao))
+			return false;
+		if (desenvolvimento == null) {
+			if (other.desenvolvimento != null)
+				return false;
+		} else if (!desenvolvimento.equals(other.desenvolvimento))
+			return false;
+		if (introducao == null) {
+			if (other.introducao != null)
+				return false;
+		} else if (!introducao.equals(other.introducao))
 			return false;
 		return true;
 	}
+
 	
 	
 	

@@ -14,5 +14,5 @@ public interface RelatorioRepository extends JpaRepository<Relatorio, Long>{
 	Relatorio findByIntroducao(Introducao introducao);
 	Relatorio findByDesenvolvimento(Desenvolvimento desenvolvimento);
 	Relatorio findByConclusao(Conclusao conclusao);
-	
+	//Relatorio findByRelatorio(Introducao introducao,Desenvolvimento desenvolvimento,Conclusao conclusao);
 }
