@@ -2,6 +2,7 @@ package com.polipfc.apirestese.domain.service;
 
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,21 +40,14 @@ public class CrudRelatorioService {
 		Conclusao conclusao = conclusaoRepository.findById(relatorio.getConclusao().getId()).orElseThrow(() -> new NegocioException("Id de conclusao não encontrado"));
 	
 		
-	Relatorio relatorioExistente = relatorioRepository.findByIntroducao(relatorio.getIntroducao());
+	List<Relatorio> relatoriosExistentes = relatorioRepository.findAll();
 	
+	for (Relatorio i : relatoriosExistentes) {
+		if(i.equals(relatorio)) {
+			throw new NegocioException("relatório já existente");
+		}
+	}
 	
-	
-	//relatorioExistente.setIntroducao(introducao);
-	//relatorioExistente.setDesenvolvimento(desenvolvimento);
-	//relatorioExistente.setConclusao(conclusao);
-
-	//if(introducaoTituloExistente !=null &&!introducaoTituloExistente.equals((introducao))) {
-	//	throw new NegocioException("titulo já existente");
-	//}
-	//return introducaoRepository.save(introducao);
-	
-		
-		
 		relatorio.setIntroducao(introducao);
 		relatorio.setDesenvolvimento(desenvolvimento);
 		relatorio.setConclusao(conclusao);

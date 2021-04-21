@@ -50,7 +50,6 @@ public class Relatorio {
 	@NotNull
 	@OneToOne
 	@ConvertGroup (from = Default.class, to = ValidationGroups.ConclusaoId.class)
-	
 	private Conclusao conclusao;
 	@NotBlank
 	private String descricao;
@@ -146,17 +145,17 @@ public class Relatorio {
 		if (conclusao == null) {
 			if (other.conclusao != null)
 				return false;
-		} else if (!conclusao.equals(other.conclusao))
+		} else if (!conclusao.getId().equals(other.conclusao.getId()))
 			return false;
 		if (desenvolvimento == null) {
 			if (other.desenvolvimento != null)
 				return false;
-		} else if (!desenvolvimento.equals(other.desenvolvimento))
+		} else if (!desenvolvimento.getId().equals(other.desenvolvimento.getId()))
 			return false;
 		if (introducao == null) {
 			if (other.introducao != null)
 				return false;
-		} else if (!introducao.equals(other.introducao))
+		} else if (!introducao.getId().equals(other.introducao.getId()))
 			return false;
 		return true;
 	}
