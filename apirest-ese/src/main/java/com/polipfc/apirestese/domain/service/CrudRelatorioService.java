@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.polipfc.apirestese.domain.exception.NegocioException;
+import com.polipfc.apirestese.domain.model.Comentario;
 import com.polipfc.apirestese.domain.model.Conclusao;
 import com.polipfc.apirestese.domain.model.Desenvolvimento;
 import com.polipfc.apirestese.domain.model.Introducao;
 import com.polipfc.apirestese.domain.model.Relatorio;
 import com.polipfc.apirestese.domain.model.StatusRelatorio;
+import com.polipfc.apirestese.domain.repository.ComentarioRepository;
 import com.polipfc.apirestese.domain.repository.ConclusaoRepository;
 import com.polipfc.apirestese.domain.repository.DesenvolvimentoRepository;
 import com.polipfc.apirestese.domain.repository.IntroducaoRepository;
@@ -29,7 +31,8 @@ public class CrudRelatorioService {
 	private DesenvolvimentoRepository desenvolvimentoRepository;
 	@Autowired
 	private ConclusaoRepository conclusaoRepository;
-	
+	@Autowired
+	private ComentarioRepository comentarioRepository;
 	
 	
 	public Relatorio cria(Relatorio relatorio) {
@@ -60,4 +63,55 @@ public class CrudRelatorioService {
 		relatorioRepository.deleteById(rel_id); 
 	}
 	
+	public Comentario adicionarComentario(Long relatorioId, String descricao) {
+		Relatorio relatorio = buscar(relatorioId);
+		
+		
+		Comentario comentario = new Comentario();
+		comentario.setDataEnvio(OffsetDateTime.now());
+		comentario.setDescricao(descricao);
+		comentario.setRelatorio(relatorio);
+		
+		return comentarioRepository.save(comentario);  
+	}
+	
+	public Comentario excluirComentario(Long relatorioId, Long comentarioId) {
+		
+		Relatorio relatorio = buscar(relatorioId);
+		Comentario comentario = comentarioRepository.findById(comentarioId).orElseThrow(() -> new NegocioException("Relatorio não encontrado"));
+		relatorio.getComentarios().remove(comentario);
+		comentarioRepository.deleteById(comentarioId);
+		return comentarioRepository.save(comentario);  
+	}
+	
+	public void finalizar(Long relatorioId) {
+
+			Relatorio relatorio = buscar(relatorioId);
+			if(!relatorio.getStatusRelatorio().equals(StatusRelatorio.ABERTO)) {
+				throw new NegocioException("relatório não pode ser finalizado");
+			}
+			relatorio.setDataFinalizacao(OffsetDateTime.now());
+			relatorio.setStatusRelatorio(StatusRelatorio.FINALIZADO);
+			relatorioRepository.save(relatorio);
+			
+	}
+
+	private Relatorio buscar(Long relatorioId) {
+		return relatorioRepository.findById(relatorioId).orElseThrow(() -> new NegocioException("Relatorio não encontrado"));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

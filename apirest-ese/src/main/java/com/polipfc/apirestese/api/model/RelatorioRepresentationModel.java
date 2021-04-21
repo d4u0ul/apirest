@@ -1,76 +1,24 @@
-package com.polipfc.apirestese.domain.model;
+package com.polipfc.apirestese.api.model;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
+import com.polipfc.apirestese.domain.model.Conclusao;
+import com.polipfc.apirestese.domain.model.Desenvolvimento;
+import com.polipfc.apirestese.domain.model.Introducao;
+import com.polipfc.apirestese.domain.model.Relatorio;
+import com.polipfc.apirestese.domain.model.StatusRelatorio;
 
-import org.springframework.context.annotation.Primary;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.polipfc.apirestese.domain.ValidationGroups;
-
-@Entity
-public class Relatorio {
+public class RelatorioRepresentationModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
-
-	//podemos colocar a parametrização de join com @JoinColumn(name=cliente_id)  <--cliente_id é o padrão assumido por @onetoone ou seja classe_id esse relacionamento deve ser feito no bd
-	@OneToOne
-	@NotNull
-	@Valid
-	@ConvertGroup (from = Default.class, to = ValidationGroups.IntroducaoId.class)
-	
 	private Introducao introducao;
-	@Valid
-	@NotNull
-	@OneToOne
-	@ConvertGroup (from = Default.class, to = ValidationGroups.DesenvolvimentoId.class)
-	
 	private Desenvolvimento desenvolvimento;
-	@Valid
-	@NotNull
-	@OneToOne
-	@ConvertGroup (from = Default.class, to = ValidationGroups.ConclusaoId.class)
 	private Conclusao conclusao;
-	@NotBlank
 	private String descricao;
-	
-	@JsonProperty(access=Access.READ_ONLY)
-	@Column(name="status")
-	@Enumerated(EnumType.STRING) //especifica que queremos guardar no bd uma string, se não ele identifica como números 1,2,3...
 	private StatusRelatorio statusRelatorio;
-	@JsonProperty(access=Access.READ_ONLY)
 	private OffsetDateTime dataAbertura;
-	@JsonProperty(access=Access.READ_ONLY)
 	private OffsetDateTime dataFinalizacao;
-	@OneToMany(mappedBy = "relatorio")
-	private List<Comentario> comentarios= new ArrayList<>();
-	
-	
-	
-	
-	
-	
+	//private List<Comentario> comentarios= new ArrayList<>();
 	
 	public Long getId() {
 		return id;
@@ -120,12 +68,12 @@ public class Relatorio {
 	public void setDataFinalizacao(OffsetDateTime dataFinalizacao) {
 		this.dataFinalizacao = dataFinalizacao;
 	}
-	public List<Comentario> getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
+	//public List<Comentario> getComentarios() {
+	//	return comentarios;
+	//}
+	//public void setComentarios(List<Comentario> comentarios) {
+	//	this.comentarios = comentarios;
+	//}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -143,25 +91,28 @@ public class Relatorio {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Relatorio other = (Relatorio) obj;
+		RelatorioRepresentationModel other = (RelatorioRepresentationModel) obj;
 		if (conclusao == null) {
 			if (other.conclusao != null)
 				return false;
-		} else if (!conclusao.getId().equals(other.conclusao.getId()))
+		} else if (!conclusao.equals(other.conclusao))
 			return false;
 		if (desenvolvimento == null) {
 			if (other.desenvolvimento != null)
 				return false;
-		} else if (!desenvolvimento.getId().equals(other.desenvolvimento.getId()))
+		} else if (!desenvolvimento.equals(other.desenvolvimento))
 			return false;
 		if (introducao == null) {
 			if (other.introducao != null)
 				return false;
-		} else if (!introducao.getId().equals(other.introducao.getId()))
+		} else if (!introducao.equals(other.introducao))
 			return false;
 		return true;
 	}
 
+	
+	
+	
 	
 	
 	
