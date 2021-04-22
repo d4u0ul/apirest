@@ -1,0 +1,682 @@
+{
+	"info": {
+		"_postman_id": "dcd35644-709c-4ff7-b978-34f2d5631380",
+		"name": "apirest-ese",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Introducao",
+			"item": [
+				{
+					"name": "lista Intro",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/relatorio/introducao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"introducao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista 1 Introducao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/introducao/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"introducao",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "introducao adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"titulo\": \"intro-tit2\",\r\n        \"autoria\": \"intro-aut2\",\r\n        \"resumoEstruturado\": \"intro-res-est2\",\r\n        \"palavrasChave\": \"Intro-pc2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/introducao/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"introducao",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "introducao atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"titulo\": \"teste4\",\r\n        \"autoria\": \"teste45\",\r\n        \"resumoEstruturado\": \"teste43\",\r\n        \"palavrasChave\": \"teste4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/introducao/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"introducao",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "introducao exclusao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/introducao/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"introducao",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desenvolvimento",
+			"item": [
+				{
+					"name": "Lista Desenvolvimento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/desenvolvimento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"desenvolvimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista 1 desenvolvimento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/desenvolvimento/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"desenvolvimento",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desenvolvimento adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"introducao\": \"des-intro5\",\r\n        \"historico\": \"des-histo5\",\r\n        \"planejamentoDoExperimento\": \"des-plan5\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/desenvolvimento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"desenvolvimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desenvolvimento atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 5,\r\n        \"introducao\": \"des-intro5\",\r\n        \"historico\": \"des-histo5\",\r\n        \"planejamentoDoExperimento\": \"des-plan5\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/desenvolvimento/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"desenvolvimento",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desenvolvimento exclusao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/desenvolvimento/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"desenvolvimento",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conclusao",
+			"item": [
+				{
+					"name": "Lista Conclusao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/conclusao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"conclusao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista 1  Conclusao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/conclusao/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"conclusao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desenvolvimento adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n\r\n        \"desviosDoPlanejamento\": \"concl-desv5\",\r\n        \"analises\": \"concl-ana5\",\r\n        \"discussão\": \"concl-disc5\",\r\n        \"conclusõesEtrabalhosFuturos\": \"concl-conctrab5\",\r\n        \"contribuidores\": \"concl-contr5\",\r\n        \"referencias\": \"concl-ref5\",\r\n        \"apendices\": \"concl-apend5\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/conclusao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"conclusao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "desenvolvimento atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \"id\": 4,\r\n        \"desviosDoPlanejamento\": \"concl-desv4\",\r\n        \"analises\": \"concl-ana4\",\r\n        \"discussão\": \"concl-disc4\",\r\n        \"conclusõesEtrabalhosFuturos\": \"concl-conctrab4\",\r\n        \"contribuidores\": \"concl-contr4\",\r\n        \"referencias\": \"concl-ref4\",\r\n        \"apendices\": \"concl-apend4\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/conclusao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"conclusao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conclusao exclusao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/conclusao1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"conclusao1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Relatorio",
+			"item": [
+				{
+					"name": "Lista Relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Comentário - Relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/1/comentarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"1",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista 1  Relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"introducao\":{\r\n            \"id\":2\r\n    },\r\n     \"desenvolvimento\":{\r\n            \"id\":2\r\n    },\r\n     \"conclusao\":{\r\n            \"id\":1\r\n    }\r\n    ,\r\n    \"descricao\": \"relatorio sobre a aplicação de um método específico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario - Relatorio - Adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Uma verba será liberada em 30 dias para continuar o projeto, até o projeto ficará parado3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/11/comentarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"11",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio - Finalizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/17/finalizacao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"17",
+								"finalizacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio - cancelar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/17/cancelamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"17",
+								"cancelamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio - reabrir",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/17/reabertura",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"17",
+								"reabertura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"introducao\": {\r\n        \"id\": 3,\r\n        \"titulo\": \"intro-titulo50mms\",\r\n        \"autoria\": \"intro-aut1\",\r\n        \"resumoEstruturado\": \"intro-res-est1\",\r\n        \"palavrasChave\": \"Intro-pc1\"\r\n    },\r\n    \"desenvolvimento\": {\r\n        \"id\": 1,\r\n        \"introducao\": \"des-intro1\",\r\n        \"historico\": \"des-histo1\",\r\n        \"planejamentoDoExperimento\": \"des-plan1\"\r\n    },\r\n    \"conclusao\": {\r\n        \"id\": 1,\r\n        \"desviosDoPlanejamento\": \"concl-desv1\",\r\n        \"analises\": \"concl-ana1\",\r\n        \"conclusõesEtrabalhosFuturos\": \"concl-conctrab1\",\r\n        \"contribuidores\": \"concl-contr1\",\r\n        \"referencias\": \"concl-ref1\",\r\n        \"apendices\": \"concl-apend1\",\r\n        \"discussão\": \"concl-disc1\"\r\n    },\r\n    \"descricao\": \"relatorio sobre a aplicação de um método específico\",\r\n    \"statusRelatorio\": \"ABERTO\",\r\n    \"dataAbertura\": \"2021-04-20T04:14:41-03:00\",\r\n    \"dataFinalizacao\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comentario - Relatorio - Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"descricao\": \"Uma verba será liberada em 30 dias para continuar o projeto, até o projeto ficará parado3\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/relatorio/2/comentarios/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"2",
+								"comentarios",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio exclusao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/7/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exclusao Comentario - Relatorio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/relatorio/2/comentarios/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"relatorio",
+								"2",
+								"comentarios",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
