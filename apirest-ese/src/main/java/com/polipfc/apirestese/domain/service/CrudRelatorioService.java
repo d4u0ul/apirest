@@ -59,6 +59,12 @@ public class CrudRelatorioService {
 		return relatorioRepository.save(relatorio);
 	}
 	
+	public Relatorio atualiza(Relatorio relatorio) {
+	
+		return relatorioRepository.save(relatorio);
+	}
+	
+	
 	public void excluir(Long rel_id) {
 		relatorioRepository.deleteById(rel_id); 
 	}
@@ -74,31 +80,55 @@ public class CrudRelatorioService {
 		
 		return comentarioRepository.save(comentario);  
 	}
-	
-	public Comentario excluirComentario(Long relatorioId, Long comentarioId) {
-		
-		Relatorio relatorio = buscar(relatorioId);
-		Comentario comentario = comentarioRepository.findById(comentarioId).orElseThrow(() -> new NegocioException("Relatorio não encontrado"));
-		relatorio.getComentarios().remove(comentario);
-		comentarioRepository.deleteById(comentarioId);
+	public Comentario atualizaComentario(Comentario comentario) {
+
 		return comentarioRepository.save(comentario);  
 	}
-	
+
 	public void finalizar(Long relatorioId) {
 
 			Relatorio relatorio = buscar(relatorioId);
 			if(!relatorio.getStatusRelatorio().equals(StatusRelatorio.ABERTO)) {
-				throw new NegocioException("relatório não pode ser finalizado");
+				throw new NegocioException("relatório que não está aberto não pode ser finalizado");
 			}
 			relatorio.setDataFinalizacao(OffsetDateTime.now());
 			relatorio.setStatusRelatorio(StatusRelatorio.FINALIZADO);
 			relatorioRepository.save(relatorio);
 			
 	}
+	public void cancelar(Long relatorioId) {
 
+			Relatorio relatorio = buscar(relatorioId);
+			if(!relatorio.getStatusRelatorio().equals(StatusRelatorio.ABERTO)) {
+				throw new NegocioException("relatório finalizado ou cancelado não pode ser cancelado");
+			}
+			relatorio.setDataFinalizacao(OffsetDateTime.now());
+			relatorio.setStatusRelatorio(StatusRelatorio.CANCELADO);
+			relatorioRepository.save(relatorio);
+			
+	}
+	public void reabrir(Long relatorioId) {
+
+		Relatorio relatorio = buscar(relatorioId);
+		if(relatorio.getStatusRelatorio().equals(StatusRelatorio.ABERTO)) {
+			throw new NegocioException("relatório aberto não pode ser reaberto");
+		}
+		relatorio.setDataFinalizacao(null);
+		relatorio.setStatusRelatorio(StatusRelatorio.ABERTO);
+		
+		relatorioRepository.save(relatorio);
+		
+	}
+	
 	private Relatorio buscar(Long relatorioId) {
 		return relatorioRepository.findById(relatorioId).orElseThrow(() -> new NegocioException("Relatorio não encontrado"));
 	}
+
+	public void excluirComentario(Comentario comentario) {	
+		comentarioRepository.deleteById(comentario.getId());
+	}
+	
+
 }
 
 

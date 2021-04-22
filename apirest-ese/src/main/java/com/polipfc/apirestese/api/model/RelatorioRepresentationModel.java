@@ -1,7 +1,10 @@
 package com.polipfc.apirestese.api.model;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.polipfc.apirestese.domain.model.Comentario;
 import com.polipfc.apirestese.domain.model.Conclusao;
 import com.polipfc.apirestese.domain.model.Desenvolvimento;
 import com.polipfc.apirestese.domain.model.Introducao;

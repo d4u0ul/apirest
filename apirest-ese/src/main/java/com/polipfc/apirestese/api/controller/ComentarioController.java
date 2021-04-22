@@ -1,5 +1,6 @@
 package com.polipfc.apirestese.api.controller;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,6 +53,19 @@ public class ComentarioController {
 	}
 	
 	
+	@GetMapping("/{comentarioId}")
+	public ResponseEntity<ComentarioModel> listaUmComentario (@PathVariable Long relatorioId , @PathVariable Long comentarioId){
+		if(!comentarioRepository.existsById(comentarioId)) {
+			return ResponseEntity.notFound().build();
+		}
+		Relatorio relatorio = relatorioRepository.findById(relatorioId).orElseThrow(() -> new EntidadeNaoEncontradaException("Id de relatorio não encontrado"));
+		Comentario comentario = comentarioRepository.findById(comentarioId).orElseThrow(() -> new EntidadeNaoEncontradaException("id de comentario não encontrado"));
+		if(!relatorio.getComentarios().contains(comentario)) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(toModel(comentario));
+		
+	} 
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -63,29 +77,30 @@ public class ComentarioController {
 		
 	
 	@PutMapping("/{comentario_id}")
-	public ResponseEntity<Comentario> atualizar (@Valid  @PathVariable Long comentario_id, @Valid @RequestBody Comentario comentario){
+	public ResponseEntity<ComentarioModel> atualizar (@Valid  @PathVariable Long comentario_id, @Valid @RequestBody ComentarioInput comentarioInput){
 		if(!comentarioRepository.existsById(comentario_id)) {
 			return ResponseEntity.notFound().build();
 		}
-		comentario.setId(comentario_id);
-		crudRelatorioService.adicionarComentario(comentario.getRelatorio().getId() ,comentario.getDescricao());
-		return ResponseEntity.ok(comentario);
+		
+		Comentario comentario = comentarioRepository.findById(comentario_id).orElseThrow(() -> new EntidadeNaoEncontradaException("id de comentario não encontrado"));
+		comentario.setDescricao(comentarioInput.getDescricao());
+		crudRelatorioService.atualizaComentario(comentario);
+
+		return ResponseEntity.ok(toModel(comentario));
 		
 	} 
 	
 	@DeleteMapping("{comentarioId}")
-	public ResponseEntity<Void> remover(@PathVariable Long relatorioId,@PathVariable Long comentarioId){
-		if(!relatorioRepository.existsById(relatorioId)||!comentarioRepository.existsById(comentarioId)) {
+	public ResponseEntity<Void> remover(@PathVariable Long relatorioId , @PathVariable Long comentarioId){
+		if(!comentarioRepository.existsById(comentarioId)) {
 			return ResponseEntity.notFound().build();
 		}
-		Relatorio relatorio = relatorioRepository.findById(relatorioId).orElseThrow(() -> new EntidadeNaoEncontradaException("relatorio não encontrado"));
-		List<Comentario> comentarios= relatorio.getComentarios();
-		for( Comentario i : comentarios) {
-			if(i.getId()!=(comentarioId)) {
-				return ResponseEntity.notFound().build();
-			}
+		Relatorio relatorio = relatorioRepository.findById(relatorioId).orElseThrow(() -> new EntidadeNaoEncontradaException("Id de relatorio não encontrado"));
+		Comentario comentario = comentarioRepository.findById(comentarioId).orElseThrow(() -> new EntidadeNaoEncontradaException("id de comentario não encontrado"));
+		if(!relatorio.getComentarios().contains(comentario)) {
+			return ResponseEntity.notFound().build();
 		}
-		crudRelatorioService.excluirComentario(relatorioId, comentarioId );
+		crudRelatorioService.excluirComentario(comentario);
 		return ResponseEntity.noContent().build();
 		
 	}

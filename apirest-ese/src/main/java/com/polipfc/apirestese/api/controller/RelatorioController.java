@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.polipfc.apirestese.api.model.RelatorioRepresentationModel;
+import com.polipfc.apirestese.domain.exception.NegocioException;
+import com.polipfc.apirestese.domain.model.Introducao;
 import com.polipfc.apirestese.domain.model.Relatorio;
 import com.polipfc.apirestese.domain.repository.RelatorioRepository;
 import com.polipfc.apirestese.domain.service.CrudRelatorioService;
@@ -49,14 +51,10 @@ public class RelatorioController {
 			RelatorioRepresentationModel relatorioRepresentationModel = toModel(relatorio.get());
 			return ResponseEntity.ok(relatorioRepresentationModel);
 		}
-		
-		
 		return ResponseEntity.notFound().build();
-	
 	}
 	
-	
-	 
+ 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public RelatorioRepresentationModel adicionar(@Valid @RequestBody Relatorio relatorio) {
@@ -70,11 +68,27 @@ public class RelatorioController {
 		}
 		crudRelatorioService.excluir(relatorioId);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("/{relatorio_id}")
+	public ResponseEntity<Relatorio> atualizar (@Valid  @PathVariable Long relatorio_id, @Valid @RequestBody Relatorio relatorio){
+		if(!relatorioRepository.existsById(relatorio_id)) {
+			return ResponseEntity.notFound().build();
+		}
+		Relatorio relatorioExistente = relatorioRepository.findById(relatorio_id).orElseThrow(() -> new NegocioException("Id de Relatório não encontrado"));
+		relatorio.setStatusRelatorio(relatorioExistente.getStatusRelatorio());
+		relatorio.setDataAbertura(relatorioExistente.getDataAbertura());
+		relatorio.setId(relatorio_id);
+		crudRelatorioService.atualiza(relatorio);
+		return ResponseEntity.ok(relatorio);
 		
 	}
 	
+	
+	
+	
 	@PutMapping("/{relatorioId}/finalizacao")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void finalizar(@PathVariable Long relatorioId) {
 		crudRelatorioService.finalizar(relatorioId);
 	}
@@ -86,6 +100,18 @@ public class RelatorioController {
 		
 		return relatorios.stream().map(relatorio -> toModel(relatorio)).collect(Collectors.toList());
 		
+	}
+
+	@PutMapping("/{relatorioId}/cancelamento")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void cancelar(@PathVariable Long relatorioId) {
+		crudRelatorioService.cancelar(relatorioId);
+	}
+	
+	@PutMapping("/{relatorioId}/reabertura")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void reabrir(@PathVariable Long relatorioId) {
+		crudRelatorioService.reabrir(relatorioId);
 	}
 	
 }
