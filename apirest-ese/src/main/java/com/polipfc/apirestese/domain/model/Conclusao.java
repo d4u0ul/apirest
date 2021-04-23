@@ -30,10 +30,23 @@ public class Conclusao {
 	@NotBlank
 	private String  analises;
 	@NotBlank
-	private String discussao;
+	@Column(name="disc_avaliacao_res_imp")
+	private String discussaoAvaliacaoDosResultadosEImplicacoes;
 	@NotBlank
+	@Column(name="disc_ameacas_validacao")
+	private String discussaoAmeacasDeValidacao;
+	@NotBlank
+	@Column(name="disc_inferencias")
+	private String discussaoInferencias;
+	@NotBlank
+	@Column(name="conclusoes_resumo")
+	private String conclusoesResumo ;
+	@NotBlank
+	@Column(name="conclusoes_impacto")
+	private String conclusoesImpacto;
 	@Column(name="conclusoes_trab_fut")
-	private String conclusõesEtrabalhosFuturos ;
+	@NotBlank
+	private String conclusoesTrabalhosFuturos;
 	@NotBlank
 	private String contribuidores; 
 	@NotBlank
@@ -54,17 +67,43 @@ public class Conclusao {
 	public void setAnalises(String analises) {
 		this.analises = analises;
 	}
-	public String getDiscussão() {
-		return discussao;
+	
+	
+	public String getDiscussaoAvaliacaoDosResultadosEImplicacoes() {
+		return discussaoAvaliacaoDosResultadosEImplicacoes;
 	}
-	public void setDiscussão(String discussão) {
-		this.discussao = discussão;
+	public void setDiscussaoAvaliacaoDosResultadosEImplicacoes(String discussaoAvaliacaoDosResultadosEImplicacoes) {
+		this.discussaoAvaliacaoDosResultadosEImplicacoes = discussaoAvaliacaoDosResultadosEImplicacoes;
 	}
-	public String getConclusõesEtrabalhosFuturos() {
-		return conclusõesEtrabalhosFuturos;
+	public String getDiscussaoAmeacasDeValidacao() {
+		return discussaoAmeacasDeValidacao;
 	}
-	public void setConclusõesEtrabalhosFuturos(String conclusõesEtrabalhosFuturos) {
-		this.conclusõesEtrabalhosFuturos = conclusõesEtrabalhosFuturos;
+	public void setDiscussaoAmeacasDeValidacao(String discussaoAmeacasDeValidacao) {
+		this.discussaoAmeacasDeValidacao = discussaoAmeacasDeValidacao;
+	}
+	public String getDiscussaoInferencias() {
+		return discussaoInferencias;
+	}
+	public void setDiscussaoInferencias(String discussaoInferencias) {
+		this.discussaoInferencias = discussaoInferencias;
+	}
+	public String getConclusoesResumo() {
+		return conclusoesResumo;
+	}
+	public void setConclusoesResumo(String conclusoesResumo) {
+		this.conclusoesResumo = conclusoesResumo;
+	}
+	public String getConclusoesImpacto() {
+		return conclusoesImpacto;
+	}
+	public void setConclusoesImpacto(String conclusoesImpacto) {
+		this.conclusoesImpacto = conclusoesImpacto;
+	}
+	public String getConclusoesTrabalhosFuturos() {
+		return conclusoesTrabalhosFuturos;
+	}
+	public void setConclusoesTrabalhosFuturos(String conclusoesTrabalhosFuturos) {
+		this.conclusoesTrabalhosFuturos = conclusoesTrabalhosFuturos;
 	}
 	public String getContribuidores() {
 		return contribuidores;

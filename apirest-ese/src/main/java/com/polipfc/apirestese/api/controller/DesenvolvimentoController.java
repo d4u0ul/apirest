@@ -75,7 +75,7 @@ public class DesenvolvimentoController {
 		}
 		desenvolvimentoRespository.deleteById(des_id);
 		//return ResponseEntity.noContent().build();
-		return ResponseEntity.accepted().build();
+		return ResponseEntity.noContent().build();
 	}
 	
 }
