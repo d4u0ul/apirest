@@ -24,9 +24,24 @@ public class Introducao {
 	private String titulo;
 	@NotBlank
 	private String autoria;
-	@Column(name="resumo_estruturado")
+	@Column(name="resumoestruturado_background")
 	@NotBlank
-	private String resumoEstruturado;
+	private String resumoEstruturadoBackground;
+	@Column(name="resumoestruturado_objetivosdapesquisa")
+	@NotBlank
+	private String resumoEstruturadoObjetivosDaPesquisa;
+	@Column(name="resumoestruturado_metodosutilizados")
+	@NotBlank
+	private String resumoEstruturadoMetodosUtilzados;
+	@Column(name="resumoestruturado_resultadosobtidos")
+	@NotBlank
+	private String resumoEstruturadoResultadosObtidos;
+	@Column(name="resumoestruturado_limitacoesobservadas")
+	@NotBlank
+	private String resumoEstruturadoLimitacoesObservadas;
+	@Column(name="resumoestruturado_conclusoes")
+	@NotBlank
+	private String resumoEstruturadoConclusoes;
 	@Column(name="palavras_chave")
 	@NotBlank
 	private String palavrasChave; 
@@ -50,11 +65,42 @@ public class Introducao {
 	public void setAutoria(String autoria) {
 		this.autoria = autoria;
 	}
-	public String getResumoEstruturado() {
-		return resumoEstruturado;
+
+	public String getResumoEstruturadoBackground() {
+		return resumoEstruturadoBackground;
 	}
-	public void setResumoEstruturado(String resumoEstruturado) {
-		this.resumoEstruturado = resumoEstruturado;
+	public void setResumoEstruturadoBackground(String resumoEstruturadoBackground) {
+		this.resumoEstruturadoBackground = resumoEstruturadoBackground;
+	}
+	public String getResumoEstruturadoObjetivosDaPesquisa() {
+		return resumoEstruturadoObjetivosDaPesquisa;
+	}
+	public void setResumoEstruturadoObjetivosDaPesquisa(String resumoEstruturadoObjetivosDaPesquisa) {
+		this.resumoEstruturadoObjetivosDaPesquisa = resumoEstruturadoObjetivosDaPesquisa;
+	}
+	public String getResumoEstruturadoMetodosUtilzados() {
+		return resumoEstruturadoMetodosUtilzados;
+	}
+	public void setResumoEstruturadoMetodosUtilzados(String resumoEstruturadoMetodosUtilzados) {
+		this.resumoEstruturadoMetodosUtilzados = resumoEstruturadoMetodosUtilzados;
+	}
+	public String getResumoEstruturadoResultadosObtidos() {
+		return resumoEstruturadoResultadosObtidos;
+	}
+	public void setResumoEstruturadoResultadosObtidos(String resumoEstruturadoResultadosObtidos) {
+		this.resumoEstruturadoResultadosObtidos = resumoEstruturadoResultadosObtidos;
+	}
+	public String getResumoEstruturadoLimitacoesObservadas() {
+		return resumoEstruturadoLimitacoesObservadas;
+	}
+	public void setResumoEstruturadoLimitacoesObservadas(String resumoEstruturadoLimitacoesObservadas) {
+		this.resumoEstruturadoLimitacoesObservadas = resumoEstruturadoLimitacoesObservadas;
+	}
+	public String getResumoEstruturadoConclusoes() {
+		return resumoEstruturadoConclusoes;
+	}
+	public void setResumoEstruturadoConclusoes(String resumoEstruturadoConclusoes) {
+		this.resumoEstruturadoConclusoes = resumoEstruturadoConclusoes;
 	}
 	public String getPalavrasChave() {
 		return palavrasChave;
