@@ -20,36 +20,50 @@ public class Desenvolvimento {
 	private Long id;
 	
 	@NotBlank
-	private String intro_demonstracaoproblema;
+	@Column(name="intro_demonstracaoproblema")
+	private String introDemonstracaoProblema;
 	@NotBlank
-	private String intro_objetivopesquisa;
+	@Column(name="intro_objetivopesquisa")
+	private String introObjetivoPesquisa;
 	@NotBlank
-	private String intro_contexto;
+	@Column(name="intro_contexto")
+	private String introContexto;
 	@NotBlank
-	private String hist_tecnologiasobinvestigacao;
+	@Column(name="hist_tecnologiasobinvestigacao")
+	private String histTecnologiaSobInvestigacao;
 	@NotBlank
-	private String hist_tecnologiasalternativas;
+	@Column(name="hist_tecnologiasalternativas")
+	private String histTecnologiasAlternativas;
 	@NotBlank
-	private String hist_estudosrelacionados;
+	@Column(name="hist_estudosrelacionados")
+	private String histEstudosRelacionados;
 	@NotBlank
-	private String hist_relavanciapratica;
+	@Column(name="hist_relavanciapratica")
+	private String histRelavanciaPratica;
 	@NotBlank
 	@Column(name="planexp_objetivos")
-	private String planexp_objetivos;
+	private String planExpObjetivos;
 	@NotBlank
-	private String planexp_unidadesexperimentais;
+	@Column(name="planexp_unidadesexperimentais")
+	private String planExpUnidadesExperimentais;
 	@NotBlank
-	private String planexp_materialexperimento;
+	@Column(name="planexp_materialexperimento")
+	private String planExpMaterialExperimento;
 	@NotBlank
-	private String planexp_tarefas;
+	@Column(name="planexp_tarefas")
+	private String planExpTarefas;
 	@NotBlank
-	private String planexp_hipoparamvariaveis;
+	@Column(name="planexp_hipoparamvariaveis")
+	private String planExpHipotParamVariaveis;
 	@NotBlank
-	private String planexp_design;
+	@Column(name="planexp_design")
+	private String planExpDesign;
 	@NotBlank
-	private String planexp_procedimentos;
+	@Column(name="planexp_procedimentos")
+	private String planExpProcedimentos;
 	@NotBlank
-	private String planexp_analiseprocedimentos;
+	@Column(name="planexp_analiseprocedimentos")
+	private String planExpAnaliseProcedimentos;
 	
 	
 	
@@ -83,95 +97,95 @@ public class Desenvolvimento {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getIntro_demonstracaoproblema() {
-		return intro_demonstracaoproblema;
+	public String getIntroDemonstracaoProblema() {
+		return introDemonstracaoProblema;
 	}
-	public void setIntro_demonstracaoproblema(String intro_demonstracaoproblema) {
-		this.intro_demonstracaoproblema = intro_demonstracaoproblema;
+	public void setIntroDemonstracaoProblema(String introDemonstracaoProblema) {
+		this.introDemonstracaoProblema = introDemonstracaoProblema;
 	}
-	public String getIntro_objetivopesquisa() {
-		return intro_objetivopesquisa;
+	public String getIntroObjetivoPesquisa() {
+		return introObjetivoPesquisa;
 	}
-	public void setIntro_objetivopesquisa(String intro_objetivopesquisa) {
-		this.intro_objetivopesquisa = intro_objetivopesquisa;
+	public void setIntroObjetivoPesquisa(String introObjetivoPesquisa) {
+		this.introObjetivoPesquisa = introObjetivoPesquisa;
 	}
-	public String getIntro_contexto() {
-		return intro_contexto;
+	public String getIntroContexto() {
+		return introContexto;
 	}
-	public void setIntro_contexto(String intro_contexto) {
-		this.intro_contexto = intro_contexto;
+	public void setIntroContexto(String introContexto) {
+		this.introContexto = introContexto;
 	}
-	public String getHist_tecnologiasobinvestigacao() {
-		return hist_tecnologiasobinvestigacao;
+	public String getHistTecnologiaSobInvestigacao() {
+		return histTecnologiaSobInvestigacao;
 	}
-	public void setHist_tecnologiasobinvestigacao(String hist_tecnologiasobinvestigacao) {
-		this.hist_tecnologiasobinvestigacao = hist_tecnologiasobinvestigacao;
+	public void setHistTecnologiaSobInvestigacao(String histTecnologiaSobInvestigacao) {
+		this.histTecnologiaSobInvestigacao = histTecnologiaSobInvestigacao;
 	}
-	public String getHist_tecnologiasalternativas() {
-		return hist_tecnologiasalternativas;
+	public String getHistTecnologiasAlternativas() {
+		return histTecnologiasAlternativas;
 	}
-	public void setHist_tecnologiasalternativas(String hist_tecnologiasalternativas) {
-		this.hist_tecnologiasalternativas = hist_tecnologiasalternativas;
+	public void setHistTecnologiasAlternativas(String histTecnologiasAlternativas) {
+		this.histTecnologiasAlternativas = histTecnologiasAlternativas;
 	}
-	public String getHist_estudosrelacionados() {
-		return hist_estudosrelacionados;
+	public String getHistEstudosRelacionados() {
+		return histEstudosRelacionados;
 	}
-	public void setHist_estudosrelacionados(String hist_estudosrelacionados) {
-		this.hist_estudosrelacionados = hist_estudosrelacionados;
+	public void setHistEstudosRelacionados(String histEstudosRelacionados) {
+		this.histEstudosRelacionados = histEstudosRelacionados;
 	}
-	public String getHist_relavanciapratica() {
-		return hist_relavanciapratica;
+	public String getHistRelavanciaPratica() {
+		return histRelavanciaPratica;
 	}
-	public void setHist_relavanciapratica(String hist_relavanciapratica) {
-		this.hist_relavanciapratica = hist_relavanciapratica;
+	public void setHistRelavanciaPratica(String histRelavanciaPratica) {
+		this.histRelavanciaPratica = histRelavanciaPratica;
 	}
-	public String getPlanexp_objetivos() {
-		return planexp_objetivos;
+	public String getPlanExpObjetivos() {
+		return planExpObjetivos;
 	}
-	public void setPlanexp_objetivos(String planexp_objetivos) {
-		this.planexp_objetivos = planexp_objetivos;
+	public void setPlanExpObjetivos(String planExpObjetivos) {
+		this.planExpObjetivos = planExpObjetivos;
 	}
-	public String getPlanexp_unidadesexperimentais() {
-		return planexp_unidadesexperimentais;
+	public String getPlanExpUnidadesExperimentais() {
+		return planExpUnidadesExperimentais;
 	}
-	public void setPlanexp_unidadesexperimentais(String planexp_unidadesexperimentais) {
-		this.planexp_unidadesexperimentais = planexp_unidadesexperimentais;
+	public void setPlanExpUnidadesExperimentais(String planExpUnidadesExperimentais) {
+		this.planExpUnidadesExperimentais = planExpUnidadesExperimentais;
 	}
-	public String getPlanexp_materialexperimento() {
-		return planexp_materialexperimento;
+	public String getPlanExpMaterialExperimento() {
+		return planExpMaterialExperimento;
 	}
-	public void setPlanexp_materialexperimento(String planexp_materialexperimento) {
-		this.planexp_materialexperimento = planexp_materialexperimento;
+	public void setPlanExpMaterialExperimento(String planExpMaterialExperimento) {
+		this.planExpMaterialExperimento = planExpMaterialExperimento;
 	}
-	public String getPlanexp_tarefas() {
-		return planexp_tarefas;
+	public String getPlanExpTarefas() {
+		return planExpTarefas;
 	}
-	public void setPlanexp_tarefas(String planexp_tarefas) {
-		this.planexp_tarefas = planexp_tarefas;
+	public void setPlanExpTarefas(String planExpTarefas) {
+		this.planExpTarefas = planExpTarefas;
 	}
-	public String getPlanexp_hipoparamvariaveis() {
-		return planexp_hipoparamvariaveis;
+	public String getPlanExpHipotParamVariaveis() {
+		return planExpHipotParamVariaveis;
 	}
-	public void setPlanexp_hipoparamvariaveis(String planexp_hipoparamvariaveis) {
-		this.planexp_hipoparamvariaveis = planexp_hipoparamvariaveis;
+	public void setPlanExpHipotParamVariaveis(String planExpHipotParamVariaveis) {
+		this.planExpHipotParamVariaveis = planExpHipotParamVariaveis;
 	}
-	public String getPlanexp_design() {
-		return planexp_design;
+	public String getPlanExpDesign() {
+		return planExpDesign;
 	}
-	public void setPlanexp_design(String planexp_design) {
-		this.planexp_design = planexp_design;
+	public void setPlanExpDesign(String planExpDesign) {
+		this.planExpDesign = planExpDesign;
 	}
-	public String getPlanexp_procedimentos() {
-		return planexp_procedimentos;
+	public String getPlanExpProcedimentos() {
+		return planExpProcedimentos;
 	}
-	public void setPlanexp_procedimentos(String planexp_procedimentos) {
-		this.planexp_procedimentos = planexp_procedimentos;
+	public void setPlanExpProcedimentos(String planExpProcedimentos) {
+		this.planExpProcedimentos = planExpProcedimentos;
 	}
-	public String getPlanexp_analiseprocedimentos() {
-		return planexp_analiseprocedimentos;
+	public String getPlanExpAnaliseProcedimentos() {
+		return planExpAnaliseProcedimentos;
 	}
-	public void setPlanexp_analiseprocedimentos(String planexp_analiseprocedimentos) {
-		this.planexp_analiseprocedimentos = planexp_analiseprocedimentos;
+	public void setPlanExpAnaliseProcedimentos(String planExpAnaliseProcedimentos) {
+		this.planExpAnaliseProcedimentos = planExpAnaliseProcedimentos;
 	}
 
 
