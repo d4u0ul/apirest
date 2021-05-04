@@ -20,7 +20,6 @@ public class Introducao {
 	@NotNull(groups = ValidationGroups.IntroducaoId.class)
 	private Long id;
 	@NotBlank
-	@Size(max=150)
 	private String titulo;
 	@NotBlank
 	private String autoria;
