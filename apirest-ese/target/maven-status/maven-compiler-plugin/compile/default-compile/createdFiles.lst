@@ -5,6 +5,7 @@ com\polipfc\apirestese\domain\model\Conclusao.class
 com\polipfc\apirestese\api\exceptionhandler\Problema.class
 com\polipfc\apirestese\domain\ValidationGroups$DesenvolvimentoId.class
 com\polipfc\apirestese\domain\ValidationGroups$ConclusaoId.class
+com\polipfc\apirestese\api\config\SwaggerConfig.class
 com\polipfc\apirestese\domain\model\Introducao.class
 com\polipfc\apirestese\domain\repository\ConclusaoRepository.class
 com\polipfc\apirestese\domain\service\CrudRelatorioService.class

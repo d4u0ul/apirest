@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +23,16 @@ import com.polipfc.apirestese.domain.model.Conclusao;
 import com.polipfc.apirestese.domain.model.Conclusao;
 import com.polipfc.apirestese.domain.model.Conclusao;
 import com.polipfc.apirestese.domain.repository.ConclusaoRepository;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import com.polipfc.apirestese.domain.repository.ConclusaoRepository;
 
 @RestController
 @RequestMapping("/relatorio/conclusao")
+@Api(value = "API REST SACREES")
+@CrossOrigin(origins="*")
 public class ConclusaoController {
 	
 	@Autowired
@@ -34,12 +41,14 @@ public class ConclusaoController {
 	
 	
 	@GetMapping()
+	@ApiOperation(value="lista todas as conclusões do sistema")
 	public List<Conclusao> listar() {
 		return conclusaoRespository.findAll();
 		
 	}
 	
 	@GetMapping("/{conc_id}")
+	@ApiOperation(value="busca 1 de todas as conclusões")
 	public ResponseEntity<Conclusao> busca(@Valid @PathVariable Long conc_id) {
 		
 		Optional<Conclusao> conclusao = conclusaoRespository.findById(conc_id);
@@ -54,11 +63,13 @@ public class ConclusaoController {
 	 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@ApiOperation(value="adiciona 1 conclusão")
 	public Conclusao adicionar(@Valid @RequestBody Conclusao conclusao) {
 		return conclusaoRespository.save(conclusao);
 	}
 	
 	@PutMapping("/{conc_id}")
+	@ApiOperation(value="atualiza 1 das conclusões do sistema")
 	public ResponseEntity<Conclusao> atualizar (@Valid  @PathVariable Long conc_id, @Valid @RequestBody Conclusao conclusao){
 		if(!conclusaoRespository.existsById(conc_id)) {
 			return ResponseEntity.notFound().build();
@@ -70,6 +81,7 @@ public class ConclusaoController {
 	}
 	
 	@DeleteMapping("/{conc_id}")
+	@ApiOperation(value="deleta uma das conclusões do sistema")
 	public ResponseEntity<Void> remover(@PathVariable Long conc_id){
 		if(!conclusaoRespository.existsById(conc_id)) {
 			return ResponseEntity.notFound().build();

@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +28,13 @@ import com.polipfc.apirestese.domain.model.Relatorio;
 import com.polipfc.apirestese.domain.repository.RelatorioRepository;
 import com.polipfc.apirestese.domain.service.CrudRelatorioService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/relatorio")
+@Api(value = "API REST SACREES")
+@CrossOrigin(origins="*")
 public class RelatorioController {
 	@Autowired
 	CrudRelatorioService crudRelatorioService;
@@ -38,11 +44,12 @@ public class RelatorioController {
 	private ModelMapper modelMapper;
 	
 	@GetMapping()
+	@ApiOperation(value="Retorna uma lista de relatórios")
 	public List<RelatorioRepresentationModel> listar() {
 		return toCollectionModel(relatorioRepository.findAll());
 		
 	}
-	
+	@ApiOperation(value="Retorna um único de relatório")
 	@GetMapping("/{relatorio_id}")
 	public ResponseEntity<RelatorioRepresentationModel> busca(@Valid @PathVariable Long relatorio_id) {
 		
@@ -54,14 +61,16 @@ public class RelatorioController {
 		return ResponseEntity.notFound().build();
 	}
 	
- 
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@ApiOperation(value="Retorna add um relatório")
 	public RelatorioRepresentationModel adicionar(@Valid @RequestBody Relatorio relatorio) {
 		return toModel(crudRelatorioService.cria(relatorio));
 	}
 
 	@DeleteMapping("/{relatorioId}")
+	@ApiOperation(value="Apaga um relatório")
 	public ResponseEntity<Void> remover(@PathVariable Long relatorioId){
 		if(!relatorioRepository.existsById(relatorioId)) {
 			return ResponseEntity.notFound().build();
@@ -71,6 +80,7 @@ public class RelatorioController {
 	}
 	
 	@PutMapping("/{relatorio_id}")
+	@ApiOperation(value="Atualiza um relatório")
 	public ResponseEntity<Relatorio> atualizar (@Valid  @PathVariable Long relatorio_id, @Valid @RequestBody Relatorio relatorio){
 		if(!relatorioRepository.existsById(relatorio_id)) {
 			return ResponseEntity.notFound().build();
@@ -89,6 +99,7 @@ public class RelatorioController {
 	
 	@PutMapping("/{relatorioId}/finalizacao")
 	@ResponseStatus(HttpStatus.ACCEPTED)
+	@ApiOperation(value="Finaliza um relatório")
 	public void finalizar(@PathVariable Long relatorioId) {
 		crudRelatorioService.finalizar(relatorioId);
 	}
@@ -104,10 +115,11 @@ public class RelatorioController {
 
 	@PutMapping("/{relatorioId}/cancelamento")
 	@ResponseStatus(HttpStatus.ACCEPTED)
+	@ApiOperation(value="Cancela um relatório")
 	public void cancelar(@PathVariable Long relatorioId) {
 		crudRelatorioService.cancelar(relatorioId);
 	}
-	
+	@ApiOperation(value="Reabre um relatório")
 	@PutMapping("/{relatorioId}/reabertura")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void reabrir(@PathVariable Long relatorioId) {

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +23,13 @@ import com.polipfc.apirestese.domain.model.Introducao;
 import com.polipfc.apirestese.domain.repository.IntroducaoRepository;
 import com.polipfc.apirestese.domain.service.CrudIntroducaoService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/relatorio/introducao")
+@Api(value = "API REST SACREES")
+@CrossOrigin(origins="*")
 public class IntroducaoController {
 	
 	@Autowired
@@ -33,11 +39,12 @@ public class IntroducaoController {
 	private CrudIntroducaoService crudIntroducaoService;
 	
 	@GetMapping()
+	@ApiOperation(value="Retorna uma lista das introduções registradas do sistema")
 	public List<Introducao> listar() {
 		return introducaoRepository.findAll();
 		
 	}
-	
+	@ApiOperation(value="Retorna 1  das introduções registradas do sistema")
 	@GetMapping("/{intro_id}")
 	public ResponseEntity<Introducao> busca(@Valid @PathVariable Long intro_id) {
 		
@@ -53,11 +60,13 @@ public class IntroducaoController {
 	 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@ApiOperation(value="Adiciona 1  das introduções registradas do sistema")
 	public Introducao adicionar(@Valid @RequestBody Introducao introducao) {
 		return crudIntroducaoService.salva(introducao);
 	}
 	
 	@PutMapping("/{intro_id}")
+	@ApiOperation(value="Atualiza 1  das introduções registradas do sistema")
 	public ResponseEntity<Introducao> atualizar (@Valid  @PathVariable Long intro_id, @Valid @RequestBody Introducao introducao){
 		if(!introducaoRepository.existsById(intro_id)) {
 			return ResponseEntity.notFound().build();
@@ -67,7 +76,7 @@ public class IntroducaoController {
 		return ResponseEntity.ok(introducao);
 		
 	}
-	
+	@ApiOperation(value="Deleta 1  das introduções registradas do sistema")
 	@DeleteMapping("/{intro_id}")
 	public ResponseEntity<Void> remover(@PathVariable Long intro_id){
 		if(!introducaoRepository.existsById(intro_id)) {
